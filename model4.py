@@ -20,12 +20,18 @@ def extract_pdf_text(file_path):
 
 # Define summarization prompt
 summarize_template = """Write a concise summary of the following content in {words_limit} words. 
-Highlight the most important points by enclosing them with <<highlight>> and <<</highlight>> tags.
+At the end, generate the most important points in bullet points as highlights.
 
 {text}
 
 Summary:
+
+Important Highlights:
+- 
+- 
+- 
 """
+
 
 prompt = PromptTemplate(input_variables=["text", "words_limit"], template=summarize_template)
 
