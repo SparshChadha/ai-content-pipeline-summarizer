@@ -73,3 +73,5 @@ tzdata==2024.2
 urllib3==2.3.0
 yarl==1.18.3
 langchain-groq==0.2.3
+beautifulsoup4==4.12.3 
+soupsieve==2.6
