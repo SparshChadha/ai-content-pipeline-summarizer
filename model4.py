@@ -76,7 +76,7 @@ st.write("Upload a document (PDF or text), or provide a URL to summarize content
 words_limit = st.number_input("Maximum words in summary", min_value=50, max_value=500, value=200, step=50)
 
 # Option to upload a file or provide a URL
-option = st.radio("Select Input Method", ("Upload File", "Enter URL"))
+option = st.radio("Select Input Method", ("Upload File", "Enter URL", "Enter Text"))
 
 if option == "Upload File":
     uploaded_file = st.file_uploader("Choose a file", type=["pdf", "txt"])
@@ -134,3 +134,23 @@ elif option == "Enter URL":
             )
         except Exception as e:
             st.error(f"An error occurred while loading the URL: {e}")
+
+elif option == "Enter Text":
+    text_input = st.text_area("Enter your text here", height=300)
+    if st.button("Generate Summary"):
+        if text_input:
+            # Summarize text
+            st.write("Generating summary...")
+            summary = summarize_large_text(text=text_input, words_limit=words_limit)
+
+            # Display summary
+            st.subheader("Summary")
+            st.write(summary)
+            
+            # Add download button for summary
+            st.download_button(
+                label="Download Summary",
+                data=summary,
+                file_name="summary.txt",
+                mime="text/plain"
+            )
