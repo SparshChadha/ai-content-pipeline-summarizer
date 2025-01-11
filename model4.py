@@ -7,7 +7,7 @@ from PyPDF2 import PdfReader
 from langchain_community.document_loaders import WebBaseLoader
 
 # Initialize the ChatGroq model
-grok_key = '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'
+grok_key = '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'
 llm = ChatGroq(temperature=0, api_key=grok_key)
 
 # Function to extract text from PDF
